@@ -1,10 +1,21 @@
 module.exports = function(grunt) {
 
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
+
     var configName = grunt.option('config') || 'config.json';
     var data = grunt.option('data') || 'data.json';
 
     var config = grunt.file.readJSON(configName);
 
+    grunt.initConfig({
+        jasmine: {
+          JS: {
+            options: {
+              specs: 'spec/*.spec.js'
+            }
+          }
+        }
+      });
 
     grunt.registerTask('generateIndex', function() {
     
@@ -51,6 +62,6 @@ module.exports = function(grunt) {
 
     });
 
-    grunt.registerTask('build',['generateIndex','generatePage1','generatePage2']);
+    grunt.registerTask('build',['generateIndex','generatePage1','generatePage2','jasmine']);
 
 }
