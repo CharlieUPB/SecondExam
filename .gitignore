@@ -1,3 +1,4 @@
 #Ignoring node moules & packagelock
 node_modules/
 package-lock.json
+build/
